@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentin?</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background: url('https://i.pinimg.com/originals/db/aa/c1/dbaac13f6278b91a15e480752b8a7242.gif') no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .overlay {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        width: 80%;
+        max-width: 600px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      h1, p {
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-family: 'Comic Sans MS', sans-serif;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+      .button {
+        padding: 15px 30px;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+      .continue {
+        background-color: #28a745;
+        color: white;
+      }
+      .yes {
+        background-color: #28a745;
+        color: white;
+      }
+      .no {
+        background-color: #dc3545;
+        color: white;
+      }
+      .button:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay" id="initialMessage">
+      <h1>Mi amor, hoy quiero recordarte lo afortunado que me siento de tenerte en mi vida. No solo hoy, sino todos los días. Gracias por ser mi apoyo, mi alegría y mi amor. Te amo un montón Gabriela</h1>
+      <div class="buttons">
+        <button class="button continue" onclick="showProposal()">Continuar</button>
+      </div>
+    </div>
+
+    <div class="overlay" id="proposal" style="display: none;">
+      <h1>¿Quieres ser mi San Valentin?💘</h1>
+      <div class="buttons">
+        <button class="button yes" onclick="openResponsePage()">¡OBVIO QUE SI!</button>
+        <button class="button no" id="noButton" onclick="moveNoButton()">¡No Daniel, Gracias!</button>
+      </div>
+      <p class="response" id="response"></p>
+    </div>
+
+    <div class="overlay" id="responseMessage" style="display: none;">
+      <h1>¡Sabía que dirías que sí! 😍, ¡Te amo muchísimo mi reina💞!</h1>
+    </div>
+
+    <script>
+      let moveCount = 0;
+
+      function showProposal() {
+        document.getElementById("initialMessage").style.display = "none";
+        document.getElementById("proposal").style.display = "block";
+      }
+
+      function openResponsePage() {
+        // Display the response message in a new overlay
+        document.getElementById("proposal").style.display = "none";
+        document.getElementById("responseMessage").style.display = "block";
+      }
+
+      function moveNoButton() {
+        if (moveCount < 2) {
+          moveCount++;
+          document.getElementById("noButton").style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`;
+        } else {
+          alert("¡Basta! Tienes que decir que sí.");
+        }
+      }
+    </script>
+  </body>
+</html>
